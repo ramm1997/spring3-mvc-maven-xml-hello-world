@@ -1,5 +1,5 @@
-# This is a basic workflow to help you get started with Actions
 
+# This is a basic workflow to help you get started with Actions
 name: CI
 
 # Controls when the action will run. 
@@ -38,4 +38,7 @@ jobs:
             java-version: 1.8
       - name: Build with Maven
         run: mvn package --file pom.xml
+      - name: tomcat deploy
+        run: curl -v -u ${{ secrets.tomcatuser }}:${{ secrets.tomcatpass }} -T < project home build > '<tomcat url>/manager/text/deploy?path=/github_action_spring'
+
       
